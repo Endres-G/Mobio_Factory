@@ -18,13 +18,15 @@ class SignUpView extends GetView<SignUpController> {
                       child: Column(
                     children: [
                       TextFormField(
+                          controller: controller.emailController,
                           decoration: const InputDecoration(
-                        hintText: "Email",
-                      )),
+                            hintText: "Email",
+                          )),
                       const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
+                        controller: controller.businessNameController,
                         decoration:
                             const InputDecoration(hintText: "nome da empresa"),
                       ),
@@ -32,12 +34,14 @@ class SignUpView extends GetView<SignUpController> {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: controller.cnpjController,
                         decoration: const InputDecoration(hintText: "cnpj"),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
+                        controller: controller.passwordController,
                         decoration: const InputDecoration(hintText: "senha"),
                       ),
                       ElevatedButton(

@@ -28,7 +28,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                         ElevatedButton(
                           onPressed: controller.login,
-                          child: Text("LOGAR"),
+                          child: const Text("LOGAR"),
                         ),
                       ],
                     ),

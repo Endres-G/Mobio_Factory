@@ -1,3 +1,6 @@
+import 'package:aic_lll/authentication/models/auth_model.dart';
+import 'package:aic_lll/core/routes/app_routes.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,9 +11,9 @@ class SignUpController extends GetxController {
   TextEditingController businessNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final Dio _client = Dio();
 
   void dispose() {
-    //ele limpa os dados da arvore quando fechamos o widget
     cnpjController.dispose();
     businessNameController.dispose();
     emailController.dispose();
@@ -19,6 +22,20 @@ class SignUpController extends GetxController {
   }
 
   Future<void> signUp() async {
-    print("a vai registraaa");
+    final result = await _client.post("http://10.0.2.2:3000/factories",
+        data: AuthModel(
+          businessName: businessNameController.text,
+          email: emailController.text,
+          password: passwordController.text,
+          cnpj: cnpjController.text,
+          isActive: true,
+        ).toJson());
+
+    if (result.statusCode == 200 || result.statusCode == 201) {
+      print("logado com sucesso");
+      Get.toNamed(AppRoutes.home);
+    } else {
+      print("erro");
+    }
   }
 }
