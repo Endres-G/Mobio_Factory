@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       getPages: AppPages.pages,
       initialRoute: AppRoutes.splash,
+      theme: ThemeData.dark(),
     );
   }
 }
